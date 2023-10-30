@@ -1,1 +1,29 @@
-<p>tasks-list works!</p>
+<h1 class="mb-4">Tasks List</h1>
+
+<table class="table tasks-list">
+    <thead>
+        <tr>
+            <th>Done</th>
+            <th>Task Message</th>
+            <th>Deadline</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let task of tasks">
+            <td>
+                <label for="task{{ task.id }}" class="checkbox-label">
+                    <input type="checkbox" id="task{{ task.id }}" name="task{{ task.id }}" [checked]="task.done ? 'checked' : ''">
+
+                    <span></span>
+                </label>
+            </td>
+            <td>{{ task.message }}</td>
+            <td>{{ task.deadline }}</td>
+            <td>
+                <a href="" class="btn btn-primary">Edit</a>
+                <a href="" class="btn btn-danger mx-2">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,6 +1,6 @@
 export interface Task {
     id: number;
     message: string;
-    deadline: Date;
+    deadline: string;
     done: boolean
 }
