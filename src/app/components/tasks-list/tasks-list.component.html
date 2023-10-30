@@ -1,5 +1,7 @@
 <h1 class="mb-4">Tasks List</h1>
 
+<a href="/tasks/details/" class="mb-4 btn btn-warning">Create task</a>
+
 <table class="table tasks-list">
     <thead>
         <tr>
@@ -21,8 +23,8 @@
             <td>{{ task.message }}</td>
             <td>{{ task.deadline }}</td>
             <td>
-                <a href="" class="btn btn-primary">Edit</a>
-                <a href="" class="btn btn-danger mx-2">Delete</a>
+                <a href="/tasks/details/{{ task.id }}" class="btn btn-primary">Edit</a>
+                <a href="/tasks/delete/{{ task.id }}" class="btn btn-danger mx-2">Delete</a>
             </td>
         </tr>
     </tbody>
