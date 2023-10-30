@@ -14,4 +14,11 @@ export class TaskServiceService {
 
     return TASKS;
   }
+
+  getById(id: number): Task | undefined {
+
+    const task = TASKS.find(el => el.id === id);
+
+    return task;
+  }
 }
