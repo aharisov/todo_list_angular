@@ -1,8 +1,24 @@
+.tasks-list tr.completed td {
+    background-color: #d4edda;
+}
+.tasks-list tr.deadline td {
+    background-color: #f8d7da;
+}
+.tasks-list tr.warn td {
+    background-color: #fff3cd;
+}
+.tasks-list tr {
+    cursor: pointer;
+}
+.tasks-list th {
+    border-color: darkslategray;
+}
 .tasks-list td {
     height: 60px;
     vertical-align: middle;
+    border-color: darkslategray;
 }
-.tasks-list input[type=checkbox] {
+/* .tasks-list input[type=checkbox] {
     display: none;
 }
 .tasks-list .checkbox-label {
@@ -18,7 +34,7 @@
     border-radius: 5px;
 }
 .tasks-list input:checked + span {
-    background-color: gray;
+    background-color: #ffc107;
 }
 .tasks-list input:checked + span::after {
     position: absolute;
@@ -27,8 +43,31 @@
     display: block;
     width: 12px;
     height: 8px;
-    border-left: 1px solid greenyellow;
-    border-bottom: 1px solid greenyellow;
+    border-left: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
+    transform: rotate(-45deg);
+    content: '';
+} */
+.tasks-list .check-label span {
+    position: relative;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border: 1px solid darkslategray;
+    border-radius: 5px;
+}
+.tasks-list .check-label.active span {
+    background-color: #ffc107;
+}
+.tasks-list .check-label.active span::after {
+    position: absolute;
+    left: 6px;
+    top: 6px;
+    display: block;
+    width: 12px;
+    height: 8px;
+    border-left: 1px solid darkslategray;
+    border-bottom: 1px solid darkslategray;
     transform: rotate(-45deg);
     content: '';
 }
