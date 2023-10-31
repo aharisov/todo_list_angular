@@ -21,4 +21,18 @@ export class TaskServiceService {
 
     return task;
   }
+
+  createTask(task: Task): void {
+
+    TASKS.push(task);
+  }
+
+  updateTask(id: number): void {
+
+    
+  }
+
+  deleteTask() {
+
+  }
 }
