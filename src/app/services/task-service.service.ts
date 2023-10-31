@@ -29,8 +29,15 @@ export class TaskServiceService {
     TASKS.push(task);
   }
 
-  updateTask(id: number): void {
+  updateTask(id: number, taskModified: Task): void {
 
+    const task = TASKS.find(el => el.id === id);
+
+    if (task) {
+
+      task.message = taskModified.message;
+      task.deadline = taskModified.deadline;
+    }
     
   }
 

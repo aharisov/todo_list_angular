@@ -26,6 +26,7 @@ export class TaskDetailsComponent {
   // variables for error and success messages
   error: boolean = false;
   successCreated: boolean = false;
+  successModified: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -49,18 +50,35 @@ export class TaskDetailsComponent {
     this.task = this.taskService.getById(id);
 
     // get data from form inputs and pass it to form builder
-    this.editForm.value.message = this.task?.message;
-    this.editForm.value.deadline = this.task?.deadline;
+    let formValues = {
+      message: this.task?.message,
+      deadline: this.task?.deadline
+    }
 
-    // console.log('test', this.task);
+    this.editForm.patchValue(formValues);
+
+    console.log('test', this.editForm.value);
   }
 
-  saveTask(task: Task): void {
+  saveNewTask(newTask: Task): void {
 
     // add task to tasks array
-    this.taskService.createTask(task);
+    this.taskService.createTask(newTask);
     // show success message
     this.successCreated = true;
+
+    // redirect to tasks page after 1 sec
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1000);
+  }
+
+  saveModifiedTask(modTask: Task, id: number): void {
+
+    // add task to tasks array
+    this.taskService.updateTask(id, modTask);
+    // show success message
+    this.successModified = true;
 
     // redirect to tasks page after 1 sec
     setTimeout(() => {
@@ -82,19 +100,33 @@ export class TaskDetailsComponent {
       // remove error message
       this.error = false;
 
-      // create timestamp for task id
-      const currentDate = new Date();
-      const timestamp = currentDate.getTime();
+      if (this.task) {
 
-      // create new task object
-      const newTask: Task = {
-        id: timestamp,
-        message: this.editForm.value.message,
-        deadline: this.editForm.value.deadline
-      };
+        const modTask: Task = {
+          id: this.task.id,
+          message: this.editForm.value.message,
+          deadline: this.editForm.value.deadline
+        };
 
-      // pass new task to save method
-      this.saveTask(newTask);
+        // pass new task to save method
+        this.saveModifiedTask(modTask, this.task.id);
+
+      } else {
+
+        // create timestamp for task id
+        const currentDate = new Date();
+        const timestamp = currentDate.getTime();
+
+        // create new task object
+        const newTask: Task = {
+          id: timestamp,
+          message: this.editForm.value.message,
+          deadline: this.editForm.value.deadline
+        };
+
+        // pass new task to save method
+        this.saveNewTask(newTask);
+      }
 
     } else {
       
@@ -103,4 +135,5 @@ export class TaskDetailsComponent {
     }
     
   }
+
 }
