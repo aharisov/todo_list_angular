@@ -1,10 +1,12 @@
+<!-- change title for creating or modifying task -->
 <h1 class="mb-4">{{ task ? 'Modify task' : 'Create task' }}</h1>
 
 <div>
+    <!-- show task id if task exists -->
     <h3 *ngIf="task">Task id {{ task.id }}</h3>
 
     <form [formGroup]="editForm" (ngSubmit)="onSubmit()" class="mb-4">
-
+        <!-- form inputs -->
         <div class="form-row d-flex mb-4 justify-content-between flex-column">
             <div class="form-group col-md-6 mb-4">
                 <label>Task text</label> <br>
@@ -16,10 +18,11 @@
             </div>
         </div>
 
+        <!-- alerts -->
         <div class="alert alert-success" role="alert" *ngIf="successCreated">The task was created</div>
-
         <div class="alert alert-danger" role="alert" *ngIf="error">Please fill all fields!</div>
 
+        <!-- buttons -->
         <div class="d-flex align-items-start">
             <button type="submit" class="btn btn-primary">Save</button>
             <button type="button" class="btn btn-secondary mx-2" (click)="goBack()">Cancel</button>

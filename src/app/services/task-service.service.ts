@@ -17,6 +17,7 @@ export class TaskServiceService {
 
   getById(id: number): Task | undefined {
 
+    // find task by id and return it
     const task = TASKS.find(el => el.id === id);
 
     return task;
@@ -24,6 +25,7 @@ export class TaskServiceService {
 
   createTask(task: Task): void {
 
+    // push new task to tasks array
     TASKS.push(task);
   }
 
