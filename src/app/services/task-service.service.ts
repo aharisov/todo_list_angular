@@ -31,17 +31,25 @@ export class TaskServiceService {
 
   updateTask(id: number, taskModified: Task): void {
 
-    const task = TASKS.find(el => el.id === id);
+    // find task
+    const task = this.getById(id);
 
     if (task) {
 
+      // modify task properties
       task.message = taskModified.message;
       task.deadline = taskModified.deadline;
     }
     
   }
 
-  deleteTask() {
+  deleteTask(id: number): Task[] {
 
+    // find task index in array
+    const task = TASKS.findIndex(el => el.id === id);
+    // remove task from array
+    TASKS.splice(task, 1);
+    
+    return TASKS;
   }
 }
