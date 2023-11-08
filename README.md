@@ -18,7 +18,7 @@ Afin d'exécuter ce projet localement il faut :
     npm install
 ```
 
-- démarrer le serveur
+- démarrer le serveur et aller sur l'url `http://localhost:4200/`
 
 ```bash
     ng serve
@@ -57,7 +57,7 @@ Afin d'exécuter ce projet localement il faut :
 
 In order to execute this project locally you must:
 
-- install all dependencies at the root of the project
+- install all dependencies at the root of the project and navigate to `http://localhost:4200/`
 
 ```bash
      npm install
